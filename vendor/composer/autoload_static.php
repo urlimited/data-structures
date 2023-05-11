@@ -16,6 +16,14 @@ class ComposerStaticInitb17a77936aaa673ccf2ed7936d2ce00b
         array (
             'Tree\\' => 5,
         ),
+        'S' => 
+        array (
+            'Stack\\' => 6,
+        ),
+        'Q' => 
+        array (
+            'Queue\\' => 6,
+        ),
         'P' => 
         array (
             'PhpParser\\' => 10,
@@ -31,6 +39,14 @@ class ComposerStaticInitb17a77936aaa673ccf2ed7936d2ce00b
         'Tree\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Tree',
+        ),
+        'Stack\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Stack',
+        ),
+        'Queue\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Queue',
         ),
         'PhpParser\\' => 
         array (

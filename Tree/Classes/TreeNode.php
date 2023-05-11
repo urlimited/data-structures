@@ -1,15 +1,14 @@
 <?php
 
-namespace Tree;
+namespace Tree\Classes;
 
 class TreeNode
 {
-    public mixed $value;
-    public ?TreeNode $parent;
-
     /**
      * @var array<TreeNode>
      */
+    public mixed $value;
+    public ?TreeNode $parent;
     public array $children;
 
     function __construct($value) {
@@ -23,6 +22,10 @@ class TreeNode
         return $this->value;
     }
 
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
     public function getParent()
     {
         return $this->parent;
@@ -42,5 +45,20 @@ class TreeNode
     {
         $child->setParent($this);
         $this->children[] = $child;
+    }
+
+    public function toArray(): array
+    {
+        $result = [
+            "value" => $this->value,
+            "parent" => $this->parent?->toArray(),
+            "children" => [],
+        ];
+
+        foreach ($this->children as $child) {
+            $result["children"][] = $child->toArray();
+        }
+
+        return $result;
     }
 }

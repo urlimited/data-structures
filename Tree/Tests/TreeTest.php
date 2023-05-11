@@ -1,8 +1,10 @@
 <?php
 
-namespace Tree;
+namespace Tree\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Tree\Classes\Tree;
+use Tree\Classes\TreeNode;
 
 
 class TreeTest extends TestCase
@@ -55,7 +57,7 @@ class TreeTest extends TestCase
         $result = $tree->traversePostOrder($root);
 
         // Assert the expected result
-        $expectedResult = [ 'F','E','D','C','B','A'];
+        $expectedResult = [ 'A','B','D','E','C','F'];
         $this->assertEquals($expectedResult, $result);
     }
 }

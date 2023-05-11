@@ -1,5 +1,7 @@
 <?php
-namespace Tree;
+namespace Tree\Interfaces;
+use Tree\Classes\TreeNode;
+
 interface TreeTraversalInterface
 {
     public function traversePreOrder(TreeNode $node): array;

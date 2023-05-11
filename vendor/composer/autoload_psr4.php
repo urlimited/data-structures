@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Tree\\' => array($baseDir . '/Tree'),
+    'Stack\\' => array($baseDir . '/Stack'),
+    'Queue\\' => array($baseDir . '/Queue'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
