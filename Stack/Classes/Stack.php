@@ -1,8 +1,9 @@
 <?php
 
-namespace Stack\Classes;
+namespace CodeBaseTeam\DataStructures\Stack\Classes;
 
-use Stack\Interfaces\StackInterface;
+
+use CodeBaseTeam\DataStructures\Stack\Interfaces\StackInterface;
 
 class Stack implements StackInterface
 {

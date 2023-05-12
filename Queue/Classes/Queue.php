@@ -1,8 +1,9 @@
 <?php
 
-namespace Queue\Classes;
+namespace CodeBaseTeam\DataStructures\Queue\Classes;
 
-use Queue\Interfaces\QueueInterfaces;
+
+use CodeBaseTeam\DataStructures\Queue\Interfaces\QueueInterfaces;
 
 class Queue implements QueueInterfaces
 {

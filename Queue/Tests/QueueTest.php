@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests;
+namespace CodeBaseTeam\DataStructures\Tests;
 
 
-use Queue\Classes\Queue;
+use CodeBaseTeam\DataStructures\Queue\Classes\Queue;
 use PHPUnit\Framework\TestCase;
 
 class QueueTest extends TestCase

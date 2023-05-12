@@ -1,9 +1,9 @@
 <?php
 
-namespace Stack\Tests;
+namespace CodeBaseTeam\DataStructures\Stack\Tests;
 
+use CodeBaseTeam\DataStructures\Stack\Classes\Stack;
 use PHPUnit\Framework\TestCase;
-use Stack\Classes\Stack;
 
 class StackTest extends TestCase
 {

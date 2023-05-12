@@ -1,0 +1,40 @@
+[
+  [
+    {
+      "children": [
+        {
+          "players": {
+            "name": "Bentlee",
+            "rank": "global"
+          },
+          "children": {
+            "name": "Synergistic analyzing support",
+            "width": 1658,
+            "height": 164,
+            "children": {
+              "name": "Re-engineered multi-state help-desk",
+              "width": 663,
+              "height": 1317
+            }
+          }
+        },
+        {
+          "players": {
+            "name": "Abdel",
+            "rank": "global"
+          },
+          "children": {
+            "name": "Seamless homogeneous encryption",
+            "width": 1617,
+            "height": 1357,
+            "children": {
+              "name": "Total empowering circuit",
+              "width": 104,
+              "height": 1171
+            }
+          }
+        }
+      ]
+    }
+  ]
+]
