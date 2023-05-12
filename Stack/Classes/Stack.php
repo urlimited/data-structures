@@ -15,7 +15,7 @@ class Stack implements StackInterface
 
     public function push($item): void
     {
-        array_push($this->stack, $item);
+        $this->stack[] = $item;
     }
 
     public function pop()

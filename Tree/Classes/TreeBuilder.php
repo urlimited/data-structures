@@ -4,40 +4,40 @@ namespace Tree\Classes;
 
 use Stack\Classes\Stack;
 
-class TreeBuilder
+final class TreeBuilder
 {
+    private static string $childrenField = 'children';
 
-    private ?string $childrenField = null;
-    public function convertArrayToTree(array $array): TreeNode
+    public static function convertArrayToTree(array $array): Tree
     {
         $root = new TreeNode(null);
         $stack = new Stack();
         $stack->push([$root, $array]);
 
         while (!$stack->isEmpty()) {
-            [$parentNode, $currentArray] = $stack->pop();
+            [$currentNode, $currentArray] = $stack->pop();
 
-            foreach ($currentArray as $key => $value) {
-                if ($key === $this->childrenField) {
-                    foreach ($value as $childArray) {
-                        $childNode = new TreeNode(null);
-                        $parentNode->addChild($childNode);
-                        $stack->push([$childNode, $childArray]);
-                    }
-                } else {
-                    $childNode = new TreeNode($key);
-                    $childNode->setValue($value);
-                    $parentNode->addChild($childNode);
-                }
+            $children = $currentArray[self::$childrenField] ?? [];
+
+            $value = [
+                ...array_filter($currentArray, fn($item, $key) => $key !== self::$childrenField, ARRAY_FILTER_USE_BOTH)
+            ];
+
+            $currentNode->setValue($value);
+
+            foreach ($children as $childArray) {
+                $childNode = new TreeNode(null);
+                $currentNode->addChild($childNode);
+                $stack->push([$childNode, $childArray]);
             }
         }
 
-        return $root;
+        return new Tree($root);
     }
 
-    public function setChildrenField(string $childrenField): void
+    public static function setChildrenField(string $childrenField): void
     {
-        $this->childrenField = $childrenField;
+        self::$childrenField = $childrenField;
     }
 }
 

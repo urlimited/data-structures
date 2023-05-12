@@ -46,12 +46,11 @@ class TreeNode
         $child->setParent($this);
         $this->children[] = $child;
     }
-
     public function toArray(): array
     {
         $result = [
             "value" => $this->value,
-            "parent" => $this->parent?->toArray(),
+            "parent" => null,
             "children" => [],
         ];
 
