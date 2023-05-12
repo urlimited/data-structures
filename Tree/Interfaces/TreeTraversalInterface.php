@@ -4,7 +4,7 @@ use Tree\Classes\TreeNode;
 
 interface TreeTraversalInterface
 {
-    public function traversePreOrder(TreeNode $node): array;
-    public function traversePostOrder(TreeNode $node): array;
+    public function traversalPreOrder(TreeNode $node): array;
+    public function traversalPostOrder(TreeNode $node): array;
 
 }

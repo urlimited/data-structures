@@ -36,7 +36,7 @@ class TreeTest extends TestCase
         $tree = new Tree($root);
 
         // Perform the traversal
-        $result = $tree->traversePreOrder($root);
+        $result = $tree->traversalPreOrder($root);
 
         // Assert the expected result
         $expectedResult = [1,2,3 ,4,5 ,6,7,8,9,10];
@@ -70,7 +70,7 @@ class TreeTest extends TestCase
 
         $tree = new Tree($root);
         // Perform the traversal
-        $result = $tree->traversePostOrder($root);
+        $result = $tree->traversalPostOrder($root);
 
         // first shows the latest additions on the right side and then on the left side starting from the right
         $expectedResult = [8,4,9,5,2,10,6,7,3,1];

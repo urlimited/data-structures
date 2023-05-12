@@ -10,6 +10,10 @@ final class TreeBuilder
 
     public static function convertArrayToTree(array $array): Tree
     {
+        if (!array_is_list($array)) {
+            $array = [$array];
+        }
+
         $root = new TreeNode(null);
         $stack = new Stack();
         $stack->push([$root, $array]);

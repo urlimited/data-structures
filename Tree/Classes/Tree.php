@@ -29,13 +29,19 @@ class Tree extends \Tree\Classes\TreeNode implements TreeTraversalInterface
      * @benchmark 1000 elements works with ... Mb \
      *      10 elements works with ... Mb
      */
-    public function traversePreOrder(TreeNode $node): array
+    public function traversalPreOrder(
+        TreeNode $node,
+        ?callable $callback = null,
+        array $callableParameters = []
+    ):void
     {
         $result = [];
 
         $queue = new Queue();
 
         $queue->enqueue($node);
+
+        $callback(...$callableParameters);
 
         while (!$queue->isEmpty()) {
             $currentNode = $queue->dequeue();
@@ -47,14 +53,22 @@ class Tree extends \Tree\Classes\TreeNode implements TreeTraversalInterface
             }
         }
 
-        return $result;
+        foreach($result as $r) {
+            $callback($r, ...$callableParameters);
+        }
+
+
     }
 
     /**
      * @benchmark 1000 elements works with ... Mb \
      *      10 elements works with ... Mb
      */
-    public function traversePostOrder(TreeNode $node): array
+    public function traversalPostOrder(
+        TreeNode $node,
+        ?callable $callback = null,
+        array $callableParameters = []
+    ): void
     {
         $stackTraversal = new Stack();
         $stackResults = new Stack();
@@ -78,6 +92,10 @@ class Tree extends \Tree\Classes\TreeNode implements TreeTraversalInterface
             $result[] = $stackResults->pop();
         }
 
-        return $result;
+        foreach($result as $r) {
+            $callback($r, ...$callableParameters);
+        }
+
+
     }
 }
