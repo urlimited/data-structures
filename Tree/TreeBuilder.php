@@ -7,43 +7,48 @@ use CodeBaseTeam\DataStructures\Tree\Exceptions\InvalidDataException;
 
 final class TreeBuilder
 {
-    private static string $childrenField = 'children';
+    private static string $childrenFieldKey = 'children';
 
     /**
      * @throws InvalidDataException
      */
     public static function fromArray(array $data): Tree
     {
-        $root = new TreeNode(null);
+        $tree = new Tree();
+        $root = $tree->getRoot();
+
         $stack = new Stack();
         $stack->push([$root, $data]);
 
         while (!$stack->isEmpty()) {
             [$currentNode, $currentData] = $stack->pop();
 
-            $children = $currentData[self::$childrenField] ?? [];
+            $children = $currentData[self::$childrenFieldKey] ?? [];
 
             if (!array_is_list($children)) {
                 throw new InvalidDataException();
             }
 
-            $value = array_filter($currentData, fn($item, $key) => $key !== self::$childrenField, ARRAY_FILTER_USE_BOTH);
+            $value = array_filter($currentData, fn($item, $key) => $key !== self::$childrenFieldKey, ARRAY_FILTER_USE_BOTH);
 
             $currentNode->setValue($value);
 
             foreach ($children as $childData) {
-                $childNode = new TreeNode(null);
+                $childNode = new TreeNode(
+                    tree: $tree,
+                    value: null
+                );
                 $currentNode->addChild($childNode);
                 $stack->push([$childNode, $childData]);
             }
         }
 
-        return new Tree($root);
+        return $tree;
     }
 
-    public static function setChildrenField(string $childrenField): void
+    public static function setChildrenFieldKey(string $childrenField): void
     {
-        self::$childrenField = $childrenField;
+        self::$childrenFieldKey = $childrenField;
     }
 }
 

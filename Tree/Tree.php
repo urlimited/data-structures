@@ -10,9 +10,15 @@ use CodeBaseTeam\DataStructures\Tree\Interfaces\TreeTraversalInterface;
 class Tree implements TreeTraversalInterface
 {
     private TreeNode $root;
+    private int $lastInsertId = 0;
 
-    public function __construct(TreeNode $root = null)
+    public function __construct()
     {
+        $root = new TreeNode(
+            tree: $this,
+            value: null
+        );
+
         $this->root = $root;
     }
 
@@ -22,7 +28,11 @@ class Tree implements TreeTraversalInterface
 
         $this->traversalPostOrder(
             $clonedRoot,
-            fn(TreeNode $item) => $item->parent = null
+            function(TreeNode $item) {
+                unset($item->parent);
+                unset($item->id);
+                unset($item->tree);
+            }
         );
 
         return json_encode($clonedRoot);
@@ -101,5 +111,10 @@ class Tree implements TreeTraversalInterface
                 $callback($r);
             }
         }
+    }
+
+    public function generateNodeId(): int
+    {
+        return ++$this->lastInsertId;
     }
 }

@@ -23,12 +23,12 @@ class FromArrayTest extends TestCase
         $jsonData = json_decode($data, true);
 
         // 2. Scenario run step
-        TreeBuilder::setChildrenField('children');
+        TreeBuilder::setChildrenFieldKey('children');
 
         $tree = TreeBuilder::fromArray($jsonData);
 
         // 3. Assertion step
-        $expectedResult = '{"value":{"qwe_1":"some value 1","qwe_2":"some value 2"},"parent":null,"children":[{"value":{"players":{"name":"Bentlee","rank":"global"}},"parent":null,"children":[{"value":{"name":"Synergistic analyzing support","width":1658,"height":164},"parent":null,"children":[{"value":{"name":"Re-engineered multi-state help-desk","width":663,"height":1317},"parent":null,"children":[]}]}]}]}';
+        $expectedResult = '{"value":{"qwe_1":"some value 1","qwe_2":"some value 2"},"children":[{"value":{"players":{"name":"Bentlee","rank":"global"}},"children":[{"value":{"name":"Synergistic analyzing support","width":1658,"height":164},"children":[{"value":{"name":"Re-engineered multi-state help-desk","width":663,"height":1317},"children":[]}]}]}]}';
 
         $this->assertEquals($expectedResult, $tree->toJson());
     }
@@ -43,7 +43,7 @@ class FromArrayTest extends TestCase
         $jsonData = json_decode($data, true);
 
         // 2. Scenario run step
-        TreeBuilder::setChildrenField('children');
+        TreeBuilder::setChildrenFieldKey('children');
 
         TreeBuilder::fromArray($jsonData);
     }
@@ -56,12 +56,12 @@ class FromArrayTest extends TestCase
         $jsonData = json_decode($data, true);
 
         // 2. Scenario run step
-        TreeBuilder::setChildrenField('children');
+        TreeBuilder::setChildrenFieldKey('children');
 
         $tree = TreeBuilder::fromArray($jsonData);
 
         // 3. Assertion step
-        $expectedResult = '{"value":[[{"children":[{"players":{"name":"Bentlee","rank":"global"},"children":{"name":"Synergistic analyzing support","width":1658,"height":164,"children":{"name":"Re-engineered multi-state help-desk","width":663,"height":1317}}},{"players":{"name":"Abdel","rank":"global"},"children":{"name":"Seamless homogeneous encryption","width":1617,"height":1357,"children":{"name":"Total empowering circuit","width":104,"height":1171}}}]}]],"parent":null,"children":[]}';
+        $expectedResult = '{"value":[[{"children":[{"players":{"name":"Bentlee","rank":"global"},"children":{"name":"Synergistic analyzing support","width":1658,"height":164,"children":{"name":"Re-engineered multi-state help-desk","width":663,"height":1317}}},{"players":{"name":"Abdel","rank":"global"},"children":{"name":"Seamless homogeneous encryption","width":1617,"height":1357,"children":{"name":"Total empowering circuit","width":104,"height":1171}}}]}]],"children":[]}';
 
         $this->assertEquals($expectedResult, $tree->toJson());
     }

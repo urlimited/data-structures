@@ -6,16 +6,22 @@ final class TreeNode
 {
     public mixed $value;
     public ?TreeNode $parent;
+    public int $id;
+    public Tree $tree;
 
     /**
      * @var array<TreeNode>
      */
     public array $children;
 
-    function __construct($value = null) {
+    function __construct(Tree $tree, $value = null) {
         $this->value = $value;
         $this->parent = null;
         $this->children = [];
+
+        $this->tree = $tree;
+
+        $this->id = $this->tree->generateNodeId();
     }
 
     public function getValue()
@@ -27,6 +33,7 @@ final class TreeNode
     {
         $this->value = $value;
     }
+
     public function getParent()
     {
         return $this->parent;
@@ -47,6 +54,12 @@ final class TreeNode
         $child->setParent($this);
         $this->children[] = $child;
     }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
     public function toArray(): array
     {
         $result = [
