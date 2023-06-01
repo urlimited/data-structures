@@ -10,7 +10,7 @@
   "description": "You can use all datastructures in php here",
   "type": "library",
   "license": "MIT",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "authors": [
     {
       "name": "mt",
