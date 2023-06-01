@@ -64,7 +64,7 @@ final class TreeBuilder
             // What is value for us
             $value = array_filter(
                 $currentData,
-                function($item, $key) use (&$meta) {
+                function ($item, $key) use (&$meta) {
                     if (in_array($key, self::$metaFieldsKeys)) {
                         $meta[$key] = $item;
 
@@ -75,7 +75,7 @@ final class TreeBuilder
                         return false;
                     }
 
-                    if(is_null(self::$childrenFieldKey) || $key == self::$childrenFieldKey) {
+                    if (is_null(self::$childrenFieldKey) || $key == self::$childrenFieldKey) {
                         return false;
                     }
 
@@ -109,7 +109,10 @@ final class TreeBuilder
                     )
                     || (
                         !is_null(self::$valueContentField)
-                        && is_array($childData[self::$valueContentField])
+                        && (
+                            !array_key_exists(self::$valueContentField, $childData)
+                            || is_array($childData[self::$valueContentField])
+                        )
                     )
                 ) {
                     $stack->push([$childNode, $childData]);
@@ -126,13 +129,13 @@ final class TreeBuilder
 
                     if (!is_null(self::$metaFieldsKeys)) {
                         if (!is_null(self::$valueContentField) && is_array($childData[self::$valueContentField])) {
-                            foreach($childData[self::$valueContentField] as $childDataKey => $childDataItem) {
+                            foreach ($childData[self::$valueContentField] as $childDataKey => $childDataItem) {
                                 if (in_array($childDataKey, self::$metaFieldsKeys)) {
                                     $meta[$childDataKey] = $childDataItem;
                                 }
                             }
-                        } elseif(is_array($childData) && is_null(self::$valueContentField)) {
-                            foreach($childData as $childDataKey => $childDataItem) {
+                        } elseif (is_array($childData) && is_null(self::$valueContentField)) {
+                            foreach ($childData as $childDataKey => $childDataItem) {
                                 if (in_array($childDataKey, self::$metaFieldsKeys)) {
                                     $meta[$childDataKey] = $childDataItem;
                                 }
