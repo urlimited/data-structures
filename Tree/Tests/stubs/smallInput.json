@@ -1,26 +1,20 @@
 {
   "qwe_1": "some value 1",
   "qwe_2": "some value 2",
-  "children": [
-    {
-      "players": {
-        "name": "Bentlee",
-        "rank": "global"
-      },
-      "children": [
-        {
-          "name": "Synergistic analyzing support",
-          "width": 1658,
-          "height": 164,
-          "children": [
-            {
-              "name": "Re-engineered multi-state help-desk",
-              "width": 663,
-              "height": 1317
-            }
-          ]
-        }
-      ]
+  "qwe_3": {
+    "players": {
+      "name": "Bentlee",
+      "rank": "global"
+    },
+    "prop_1": {
+      "name": "Synergistic analyzing support",
+      "width": 1658,
+      "height": 164,
+      "prop_2": {
+        "name": "Re-engineered multi-state help-desk",
+        "width": 663,
+        "height": 1317
+      }
     }
-  ]
+  }
 }

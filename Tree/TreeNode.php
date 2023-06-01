@@ -5,8 +5,10 @@ namespace CodeBaseTeam\DataStructures\Tree;
 final class TreeNode
 {
     public mixed $value;
+    public array $meta = [];
     public ?TreeNode $parent;
     public int $id;
+    public ?string $key = null;
     public Tree $tree;
 
     /**
@@ -53,6 +55,26 @@ final class TreeNode
     {
         $child->setParent($this);
         $this->children[] = $child;
+    }
+
+    public function getMeta(): array
+    {
+        return $this->meta;
+    }
+
+    public function setMeta(array $meta): void
+    {
+        $this->meta = $meta;
+    }
+
+    public function getKey(): string
+    {
+        return $this->key;
+    }
+
+    public function setKey(string $key): void
+    {
+        $this->key = $key;
     }
 
     public function getId(): int

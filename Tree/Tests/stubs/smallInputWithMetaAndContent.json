@@ -1,0 +1,58 @@
+{
+  "content": {
+    "qwe_1": {
+      "content": "some value 1",
+      "meta": {
+        "order": 1,
+        "id": 2
+      }
+    },
+    "qwe_2": {
+      "content": "some value 2",
+      "meta": {
+        "order": 2,
+        "id": 3
+      }
+    },
+    "meta_field": {
+      "content": "some-meta-field",
+      "meta": {
+        "order": 3,
+        "id": 4
+      }
+    },
+    "qwe_3": {
+      "content": {
+        "players": {
+          "content": {
+            "name": {
+              "content": "Bentlee",
+              "meta": {
+                "order": 1
+              }
+            },
+            "rank": {
+              "content": "global",
+              "meta": {
+                "order": 1,
+                "id": 24
+              }
+            }
+          },
+          "meta": {
+            "order": 1,
+            "id": 6
+          }
+        }
+      },
+      "meta": {
+        "order": 4,
+        "id": 5
+      }
+    }
+  },
+  "meta": {
+    "order": 1,
+    "id": 1
+  }
+}
