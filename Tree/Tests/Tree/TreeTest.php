@@ -15,12 +15,18 @@ class TreeTest extends TestCase
         $tree = $this->generateTree();
         $root = $tree->getRoot();
 
-        // Perform the traversal
-        $tree->traversalPreOrder($root);
+        $result = [];
 
-        // Assert the expected result
-//        $expectedResult = [1,2,3 ,4,5 ,6,7,8,9,10];
-//        $this->assertEquals($expectedResult, $result);
+        // Perform the traversal
+        $tree->traversalPreOrder(
+            $root,
+            function(TreeNode $node) use (&$result) {
+                $result[] = $node->value;
+            }
+        );
+
+        $expectedResult = [1,2,3 ,4,5 ,6,7,8,9,10];
+        $this->assertEquals($expectedResult, $result);
     }
 
     public function testTraversePostOrder()
@@ -29,12 +35,20 @@ class TreeTest extends TestCase
         $tree = $this->generateTree();
         $root = $tree->getRoot();
 
+        $result = [];
+
         // Perform the traversal
-        $tree->traversalPostOrder($root);
+        $tree->traversalPostOrder(
+            $root,
+            function(TreeNode $node) use (&$result) {
+                $result[] = $node->value;
+            }
+        );
 
         // first shows the latest additions on the right side and then on the left side starting from the right
-        //$expectedResult = [8,4,9,5,2,10,6,7,3,1];
-        //$this->assertEquals($expectedResult, $result);
+        $expectedResult = [8,4,9,5,2,10,6,7,3,1];
+
+        $this->assertEquals($expectedResult, $result);
     }
 
     private function generateTree(): Tree

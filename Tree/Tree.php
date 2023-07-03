@@ -63,9 +63,16 @@ class Tree implements TreeTraversalInterface
 
             $result[] = $currentNode;
 
-            foreach ($currentNode->getChildren() as $child) {
-                $queue->enqueue($child);
+            // Sometimes when we change the type of tree elements
+            // via parent nodes, here we can see int, string, or other types
+            // It is used for process multidimensional arrays, for example
+            if ($currentNode instanceof TreeNode) {
+                foreach ($currentNode->getChildren() as $child) {
+                    $queue->enqueue($child);
+                }
             }
+
+
         }
 
         if (!is_null($callback)) {
@@ -93,10 +100,15 @@ class Tree implements TreeTraversalInterface
             $currentNode = $stackTraversal->pop();
             $stackResults->push($currentNode);
 
-            $children = $currentNode->getChildren();
+            // Sometimes when we change the type of tree elements
+            // via parent nodes, here we can see int, string, or other types
+            // It is used for process multidimensional arrays, for example
+            if ($currentNode instanceof TreeNode) {
+                $children = $currentNode->getChildren();
 
-            foreach ($children as $child) {
-                $stackTraversal->push($child);
+                foreach ($children as $child) {
+                    $stackTraversal->push($child);
+                }
             }
         }
 
