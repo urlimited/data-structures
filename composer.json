@@ -4,13 +4,13 @@
     "phpunit/phpunit": "^9.5"
   },
   "require": {
-    "php": "8.1",
+    "php": "^8.1",
     "ext-json": "*"
   },
   "description": "You can use all datastructures in php here",
   "type": "library",
   "license": "MIT",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "authors": [
     {
       "name": "mt",
